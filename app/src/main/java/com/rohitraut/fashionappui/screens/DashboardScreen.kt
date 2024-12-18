@@ -151,7 +151,7 @@ fun DashboardScreen (navController:NavController) {
                             )
                         )
                     )
-                    .padding(start = 16.dp, top = 32.dp, end = 16.dp, bottom = 16.dp)
+                    .padding(start = 16.dp)
             ) {
                 item {
                     ProductView(
@@ -178,7 +178,7 @@ fun DashboardScreen (navController:NavController) {
                         image = R.drawable.profile_5,
                         name = "Crop",
                         price = 107.50f,
-                        modifier = Modifier.padding(end = 16.dp, top = 60.dp),
+                        modifier = Modifier.padding(end = 16.dp, top = 40.dp),
                         navController = navController
 
                     )
@@ -198,7 +198,7 @@ fun DashboardScreen (navController:NavController) {
                         image = R.drawable.profile_3,
                         name = "Jeans",
                         price = 50.20f,
-                        modifier = Modifier.padding(end = 16.dp, top = 42.dp),
+                        modifier = Modifier.padding(end = 16.dp, top = 40.dp),
                         navController = navController
 
                     )
@@ -271,7 +271,7 @@ fun ProductView(
     modifier: Modifier = Modifier
 ){
     ElevatedCard (
-        modifier = Modifier.clickable (interactionSource = remember {
+        modifier = modifier.clickable (interactionSource = remember {
             MutableInteractionSource()
         },
             indication = null
