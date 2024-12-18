@@ -23,7 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RenderEffect
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -53,7 +55,10 @@ fun LandingScreen(navController: NavController, modifier: Modifier = Modifier) {
             .heightIn(10.dp,90.dp)
             .background(color = Color.Gray)
             .align(Alignment.BottomCenter)
+
         ){
+
+
             Row(modifier = Modifier
                 .background(
                     color = Color.Red,
@@ -68,6 +73,7 @@ fun LandingScreen(navController: NavController, modifier: Modifier = Modifier) {
 
             )
             {
+
                 Text(
                     text = "Get Started ",
                     fontSize = 16.sp,
