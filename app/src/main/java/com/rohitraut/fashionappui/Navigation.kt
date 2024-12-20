@@ -8,6 +8,8 @@ import androidx.navigation.compose.rememberNavController
 import com.rohitraut.fashionappui.screens.DashboardScreen
 import com.rohitraut.fashionappui.screens.LandingScreen
 import com.rohitraut.fashionappui.screens.ProductScreen
+import com.rohitraut.fashionappui.screens.ProfileScreen
+import com.rohitraut.fashionappui.screens.SettingsScreen
 import kotlin.math.round
 
 @Composable
@@ -23,7 +25,12 @@ fun Navigation() {
         }
         composable(route = Screen.Product.route) {
             ProductScreen(navController = navController)
-
+        }
+        composable(route = Screen.Profile.route) {
+            ProfileScreen(navController = navController)
+        }
+        composable(route = Screen.Profile.route) {
+            SettingsScreen(navController = navController)
         }
     }
 }

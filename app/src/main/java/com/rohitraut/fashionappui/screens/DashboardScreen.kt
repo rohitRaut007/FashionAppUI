@@ -217,8 +217,11 @@ fun DashboardScreen (navController:NavController) {
             }
 
         }
+
+        // navigation
         Column (modifier = Modifier
             .fillMaxWidth()
+            .size(52.dp)
             .align(Alignment.BottomCenter)
             .background(Color.White,
                 shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
@@ -234,6 +237,7 @@ fun DashboardScreen (navController:NavController) {
                     imageVector = Icons.Outlined.ShoppingCart,
                     contentDescription = null,
                     modifier = Modifier.size(30.dp)
+
                 )
                 Icon(
                     imageVector = Icons.Outlined.FavoriteBorder,
@@ -250,11 +254,13 @@ fun DashboardScreen (navController:NavController) {
                     imageVector = Icons.Outlined.AccountCircle,
                     contentDescription = null,
                     modifier = Modifier.size(30.dp)
+
                 )
                 Icon(
                     imageVector = Icons.Outlined.Settings,
                     contentDescription = null,
                     modifier = Modifier.size(30.dp)
+
                 )
 
             }

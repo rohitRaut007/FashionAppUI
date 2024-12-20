@@ -1,37 +1,25 @@
 package com.rohitraut.fashionappui.screens
 
-import android.graphics.Paint.Align
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -44,164 +32,199 @@ import com.rohitraut.fashionappui.R
 
 @Composable
 fun ProductScreen(navController: NavController) {
-    Column (
-        modifier = Modifier
-        .fillMaxSize()
-        .background(
-            color = Color.White,
-            shape = RectangleShape
-        )
-    ){
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(24.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ){
-            Image(
-                imageVector = (Icons.Default.ArrowBack),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(24.dp)
-                    .fillMaxSize()
-                    .clickable {
-                        navController.navigateUp()
-                    }
-            )
-
-            Text(
-                text = "PRODUCT",
-                textAlign = TextAlign.Center,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-
-            )
-
-            Image(
-               imageVector = Icons.Outlined.ShoppingCart,
-                contentDescription = null,
-//                tint = Color(android.graphics.Color.parseColor("#509790")),
-                modifier = Modifier.size(30.dp)
-            )
-
-
-        }
-        Column(modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.White)
         ) {
-            Image(
-                painter = painterResource(
-                    id = R.drawable.profile_1),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(400.dp)
-
-            )
-            Text(
-                text = "Summer outfit",
-                textAlign = TextAlign.Center,
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold,
+           Spacer(modifier = Modifier.size(16.dp))
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp),
-            )
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Back",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clickable { navController.navigateUp() },
+                    tint = Color.Black
+                )
 
-            Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ",
-                textAlign = TextAlign.Center,
-                fontSize = 16.sp,
+                Text(
+                    text = "Product",
+                    textAlign = TextAlign.Center,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.align(Alignment.CenterVertically)
+                )
+
+                Icon(
+                    imageVector = Icons.Filled.ShoppingCart,
+                    contentDescription = "Cart",
+                    modifier = Modifier.size(24.dp),
+                    tint = Color.Black
+                )
+            }
+
+            // Product Image
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp),
-
-            )
-
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-                horizontalArrangement = Arrangement.End
-            )
-            {
+                    .height(300.dp)
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
+            ) {
                 Image(
-                    imageVector = Icons.Outlined.Star,
-                    contentDescription = null,
-                    colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(color = Color.Yellow)
+                    painter = painterResource(id = R.drawable.profile_1),
+                    contentDescription = "Product Image",
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+            // Product Details
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            ) {
+                Text(
+                    text = "Summer Outfit",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                )
+
+                Text(
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.",
+                    fontSize = 14.sp,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    repeat(4) {
+                        Icon(
+                            imageVector = Icons.Filled.Star,
+                            contentDescription = "Star",
+                            tint = Color(0xFFFFC107),
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                    Icon(
+                        imageVector = Icons.Filled.Star,
+                        contentDescription = "Star",
+                        tint = Color.LightGray,
+                        modifier = Modifier.size(20.dp)
                     )
-                Image(
-                    imageVector = Icons.Filled.Star,
-                    contentDescription = null,
-                    colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(color = Color.Yellow)
+                    Text(
+                        text = "(4.0)",
+                        fontSize = 14.sp,
+                        color = Color.Gray,
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Price",
+                    fontWeight = FontWeight.Light,
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(bottom = 4.dp)
                 )
-                Image(
-                    imageVector = Icons.Filled.Star,
-                    contentDescription = null,
-                    colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(color = Color.Yellow)
+                Text(
+                    text = "$80.40",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    color = Color(0xFF509790)
                 )
-                Image(
-                    imageVector = Icons.Filled.Star,
-                    contentDescription = null,
-                    colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(color = Color.Yellow)
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Size Selector
+                Text(
+                    text = "Select Size:",
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(bottom = 8.dp)
                 )
+
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    ProductSize(size = "S")
+                    ProductSize(size = "M")
+                    ProductSize(size = "L")
+                    ProductSize(size = "XL")
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Floating Action Buttons
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.Bottom,
+                    horizontalAlignment = Alignment.End
+                ) {
+                    FloatingActionButton(
+                        onClick = { /* Add to wishlist */ },
+                        containerColor = Color.Red,
+                        modifier = Modifier.padding(bottom = 16.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Favorite,
+                            contentDescription = "Add to Wishlist",
+                            tint = Color.White
+                        )
+                    }
+                }
 
             }
-            Text(
-                text = "Price",
-                fontWeight = FontWeight.Light,
-                fontSize = 24.sp,
+            // Buy Now Button
+            Button(
+                onClick = { /* Navigate to checkout */ },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF509790)),
                 modifier = Modifier
-                    .padding(start = 16.dp)
-            )
-            Text(
-                text = "$${80.40}",
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,
-                modifier = Modifier
-                    .padding(start = 16.dp)
-            )
-
-            Row (modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-                .padding(start = 24.dp)
-
-            ){
-                ProductSize(Size = "S")
-                ProductSize(Size = "M")
-                ProductSize(Size = "L")
-                ProductSize(Size = "XL")
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp)
+            ) {
+                Text(
+                    text = "Buy Now",
+                    color = Color.White,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
             }
-
         }
 
 
-        }
+    }
 }
 
 @Composable
-fun ProductSize( Size: String ) {
-    Box (modifier = Modifier
-        .padding(end = 8.dp)
-        .wrapContentWidth()
-        .size(48.dp)
-        .border(width = 1.dp ,color = Color.DarkGray , shape = CircleShape),
+fun ProductSize(size: String) {
+    Box(
+        modifier = Modifier
+            .size(48.dp)
+            .border(1.dp, Color.DarkGray, CircleShape),
         contentAlignment = Alignment.Center
-    ){
-        Text(text = Size,
+    ) {
+        Text(
+            text = size,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            fontSize = 24.sp,
-            modifier = Modifier.padding(4.dp)
-            )
+            fontSize = 14.sp,
+            textAlign = TextAlign.Center
+        )
     }
-
 }
 
 @Preview
 @Composable
-private fun ProductScreenPrev (){
+private fun ProductScreenPreview() {
     ProductScreen(navController = rememberNavController())
 }
