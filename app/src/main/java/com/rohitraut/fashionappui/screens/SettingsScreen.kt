@@ -36,6 +36,7 @@ fun SettingsScreen(navController: NavController) {
             .background(Color.White)
             .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.height(32.dp))
         // Header
         Text(
             text = "Settings",

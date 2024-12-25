@@ -34,7 +34,11 @@ fun ProfileScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
+
+        Spacer(modifier = Modifier.height(32.dp))
+
         // Profile Image
+
         Image(
             imageVector = Icons.Outlined.Person,
             contentDescription = "Profile Picture",
